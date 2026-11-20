@@ -97,3 +97,18 @@ az vm create --resource-group "$RG" --name vm-db --image Ubuntu2404 \
   --vnet-name "$VNET" --subnet "$SNET_PRIV" \
   --public-ip-address "" --nsg "" \
   --admin-username azureuser --generate-ssh-keys
+
+# Tier 1: Öffentliche API-VM erstellen
+az vm create \
+  --resource-group rg-learningsteps \
+  --name vm-api \
+  --image Ubuntu2404 \
+  --size Standard_D2s_v6 \
+  --storage-sku StandardSSD_LRS \
+  --vnet-name vnet-learningsteps \
+  --subnet snet-public \
+  --nsg nsg-api \
+  --public-ip-address pip-api \
+  --public-ip-sku Standard \
+  --admin-username azureuser \
+  --generate-ssh-keys
